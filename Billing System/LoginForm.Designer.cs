@@ -98,7 +98,7 @@ namespace Billing_System
             btnCancel.TabIndex = 2;
             btnCancel.Text = "CANCEL";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += this.btnCancel_Click;
+            btnCancel.Click += btnCancel_Click;
             // 
             // LoginForm
             // 
@@ -118,7 +118,7 @@ namespace Billing_System
             MinimizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Billing System - Login";
+            Text = "Billing System v1.0 - Login";
             Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
