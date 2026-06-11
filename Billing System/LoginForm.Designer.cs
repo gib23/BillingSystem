@@ -118,7 +118,7 @@ namespace Billing_System
             MinimizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Billing System v1.0 - Login";
+            Text = "Billing System v1.0 - LOGIN";
             Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
