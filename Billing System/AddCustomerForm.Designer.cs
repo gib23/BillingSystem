@@ -104,7 +104,8 @@
             txtFullName.Location = new Point(184, 58);
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(195, 27);
-            txtFullName.TabIndex = 2;
+            txtFullName.TabIndex = 1;
+            txtFullName.TextAlign = HorizontalAlignment.Right;
             // 
             // txtAddress
             // 
@@ -112,45 +113,51 @@
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(195, 27);
             txtAddress.TabIndex = 2;
+            txtAddress.TextAlign = HorizontalAlignment.Right;
             // 
             // txtContact
             // 
             txtContact.Location = new Point(184, 138);
             txtContact.Name = "txtContact";
             txtContact.Size = new Size(195, 27);
-            txtContact.TabIndex = 2;
+            txtContact.TabIndex = 3;
+            txtContact.TextAlign = HorizontalAlignment.Right;
             // 
             // txtEmail
             // 
             txtEmail.Location = new Point(184, 178);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(195, 27);
-            txtEmail.TabIndex = 2;
+            txtEmail.TabIndex = 4;
+            txtEmail.TextAlign = HorizontalAlignment.Right;
             // 
             // txtBalance
             // 
             txtBalance.Location = new Point(184, 218);
             txtBalance.Name = "txtBalance";
-            txtBalance.RightToLeft = RightToLeft.Yes;
             txtBalance.Size = new Size(195, 27);
-            txtBalance.TabIndex = 2;
+            txtBalance.TabIndex = 5;
             txtBalance.Text = "0.00";
+            txtBalance.TextAlign = HorizontalAlignment.Right;
+            txtBalance.KeyPress += txtBalance_KeyPress;
+            txtBalance.MouseUp += txtBalance_MouseUp;
             // 
             // btnSave
             // 
             btnSave.Location = new Point(24, 281);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(123, 44);
-            btnSave.TabIndex = 3;
+            btnSave.TabIndex = 6;
             btnSave.Text = "SAVE";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnClear
             // 
             btnClear.Location = new Point(147, 281);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(123, 44);
-            btnClear.TabIndex = 3;
+            btnClear.TabIndex = 7;
             btnClear.Text = "CLEAR";
             btnClear.UseVisualStyleBackColor = true;
             // 
@@ -159,7 +166,7 @@
             btnBack.Location = new Point(270, 281);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(123, 44);
-            btnBack.TabIndex = 3;
+            btnBack.TabIndex = 8;
             btnBack.Text = "BACK";
             btnBack.UseVisualStyleBackColor = true;
             // 

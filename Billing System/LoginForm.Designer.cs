@@ -72,6 +72,7 @@ namespace Billing_System
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(173, 27);
             txtUsername.TabIndex = 1;
+            txtUsername.KeyDown += txtUsername_KeyDown;
             // 
             // txtPassword
             // 
@@ -79,23 +80,25 @@ namespace Billing_System
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(173, 27);
-            txtPassword.TabIndex = 1;
+            txtPassword.TabIndex = 2;
+            txtPassword.KeyDown += txtPassword_KeyDown;
             // 
             // btnLogin
             // 
             btnLogin.Location = new Point(51, 164);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(132, 46);
-            btnLogin.TabIndex = 2;
+            btnLogin.TabIndex = 3;
             btnLogin.Text = "LOGIN";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // btnCancel
             // 
             btnCancel.Location = new Point(189, 164);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(132, 46);
-            btnCancel.TabIndex = 2;
+            btnCancel.TabIndex = 4;
             btnCancel.Text = "CANCEL";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
