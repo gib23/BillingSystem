@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Billing_System.Utils;
+using BillingSystem.Database;
+using BillingSystem.Utils;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using BillingSystem.Database;
-
 
 namespace Billing_System
 {
@@ -270,6 +271,8 @@ namespace Billing_System
                             MessageBox.Show("Customer updated successfully.",
                                 "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                            AuditLogger.Log("EDIT_CUSTOMER",$"Customer ID {_editCustomerId} updated by {AppSession.CurrentUsername}.");
+
                             // Close the form — CustomerListForm will refresh on close
                             this.Close();
                         }
@@ -319,6 +322,8 @@ namespace Billing_System
                         {
                             MessageBox.Show("Customer saved successfully.",
                                 "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            AuditLogger.Log("ADD_CUSTOMER", $"New customer '{txtFullName.Text.Trim()}' added by {AppSession.CurrentUsername}.");
 
                             ClearFields();
                         }

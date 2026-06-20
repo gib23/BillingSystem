@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCustomerForm));
             lblTitle = new Label();
             lblFullName = new Label();
             lblAddress = new Label();
@@ -48,7 +49,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle.Location = new Point(24, 22);
+            lblTitle.Location = new Point(39, 22);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(221, 28);
             lblTitle.TabIndex = 0;
@@ -57,7 +58,7 @@
             // lblFullName
             // 
             lblFullName.AutoSize = true;
-            lblFullName.Location = new Point(24, 62);
+            lblFullName.Location = new Point(44, 76);
             lblFullName.Name = "lblFullName";
             lblFullName.Size = new Size(79, 20);
             lblFullName.TabIndex = 1;
@@ -66,7 +67,7 @@
             // lblAddress
             // 
             lblAddress.AutoSize = true;
-            lblAddress.Location = new Point(24, 101);
+            lblAddress.Location = new Point(44, 115);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(65, 20);
             lblAddress.TabIndex = 0;
@@ -75,7 +76,7 @@
             // lblContact
             // 
             lblContact.AutoSize = true;
-            lblContact.Location = new Point(24, 140);
+            lblContact.Location = new Point(44, 154);
             lblContact.Name = "lblContact";
             lblContact.Size = new Size(121, 20);
             lblContact.TabIndex = 1;
@@ -84,7 +85,7 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(24, 179);
+            lblEmail.Location = new Point(44, 193);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(49, 20);
             lblEmail.TabIndex = 0;
@@ -93,7 +94,7 @@
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(24, 218);
+            lblBalance.Location = new Point(44, 232);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(105, 20);
             lblBalance.TabIndex = 1;
@@ -101,7 +102,7 @@
             // 
             // txtFullName
             // 
-            txtFullName.Location = new Point(184, 58);
+            txtFullName.Location = new Point(204, 72);
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(195, 27);
             txtFullName.TabIndex = 1;
@@ -109,7 +110,7 @@
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(184, 98);
+            txtAddress.Location = new Point(204, 112);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(195, 27);
             txtAddress.TabIndex = 2;
@@ -117,7 +118,7 @@
             // 
             // txtContact
             // 
-            txtContact.Location = new Point(184, 138);
+            txtContact.Location = new Point(204, 152);
             txtContact.Name = "txtContact";
             txtContact.Size = new Size(195, 27);
             txtContact.TabIndex = 3;
@@ -125,7 +126,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(184, 178);
+            txtEmail.Location = new Point(204, 192);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(195, 27);
             txtEmail.TabIndex = 4;
@@ -133,7 +134,7 @@
             // 
             // txtBalance
             // 
-            txtBalance.Location = new Point(184, 218);
+            txtBalance.Location = new Point(204, 232);
             txtBalance.Name = "txtBalance";
             txtBalance.Size = new Size(195, 27);
             txtBalance.TabIndex = 5;
@@ -144,7 +145,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(24, 281);
+            btnSave.Location = new Point(78, 297);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(123, 44);
             btnSave.TabIndex = 6;
@@ -154,7 +155,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(147, 281);
+            btnClear.Location = new Point(221, 297);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(123, 44);
             btnClear.TabIndex = 7;
@@ -163,9 +164,15 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(270, 281);
+            btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
+            btnBack.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnBack.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Location = new Point(3, 20);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(123, 44);
+            btnBack.Size = new Size(30, 30);
             btnBack.TabIndex = 8;
             btnBack.Text = "BACK";
             btnBack.UseVisualStyleBackColor = true;
