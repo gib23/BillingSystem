@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            lblTitle = new Label();
             lblFullName = new Label();
             lblAddress = new Label();
             lblContact = new Label();
@@ -44,15 +44,15 @@
             btnBack = new Button();
             SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(24, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(221, 28);
-            label1.TabIndex = 0;
-            label1.Text = "ADD NEW CUSTOMER";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle.Location = new Point(24, 22);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(221, 28);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "ADD NEW CUSTOMER";
             // 
             // lblFullName
             // 
@@ -169,6 +169,7 @@
             btnBack.TabIndex = 8;
             btnBack.Text = "BACK";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // AddCustomerForm
             // 
@@ -188,7 +189,7 @@
             Controls.Add(lblContact);
             Controls.Add(lblAddress);
             Controls.Add(lblFullName);
-            Controls.Add(label1);
+            Controls.Add(lblTitle);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "AddCustomerForm";
@@ -201,7 +202,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label lblTitle;
         private Label lblFullName;
         private Label lblAddress;
         private Label lblContact;
