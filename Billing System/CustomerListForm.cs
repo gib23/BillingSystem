@@ -36,9 +36,8 @@ namespace Billing_System
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddCustomerForm addCustomerForm = new AddCustomerForm();
-            addCustomerForm.ShowDialog();
-            //this.Close();
-
+            addCustomerForm.ShowDialog(this);
+            LoadCustomers();
         }
         private void CustomerListForm_Load(object sender, EventArgs e)
         {
@@ -324,6 +323,23 @@ namespace Billing_System
         {
             UpdateClock();
         }
+        private void btnChangePass_Click(object sender, EventArgs e)
+        {
+            frmChangePass changePass = new frmChangePass();
+            changePass.ShowDialog(this);
+        }
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            if (_selectedCustomerId == 0)
+            {
+                MessageBox.Show("Please select a customer to edit.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            frmViewBillingHistory viewBillingHistory = new frmViewBillingHistory(_selectedCustomerId);
+            viewBillingHistory.ShowDialog(this);
+        }
 
         // METHODS AHEAD //
         private void LoadCustomers()
@@ -372,7 +388,6 @@ namespace Billing_System
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void SearchCustomers(string keyword)
         {
             try
@@ -407,6 +422,11 @@ namespace Billing_System
 
                             dgvCustomers.DataSource = dt;
                             lblTitle.Text = $"Customer List  ({dt.Rows.Count} result(s))";
+
+                            if (dt.Rows.Count == 0)
+                            {
+                                _selectedCustomerId = 0;
+                            }
                         }
                     }
                 }
@@ -417,7 +437,6 @@ namespace Billing_System
                     "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void ConfigureDataGridView()
         {
             dgvCustomers.AutoGenerateColumns = false;
@@ -428,7 +447,6 @@ namespace Billing_System
             dgvCustomers.Columns["Email"].DataPropertyName = "Email";
             dgvCustomers.Columns["Balance"].DataPropertyName = "Balance";
         }
-
         private void OpenEditForm()
         {
             if (_selectedCustomerId == 0)
@@ -446,7 +464,6 @@ namespace Billing_System
 
             editForm.ShowDialog(this);
         }
-
         private void DeleteCustomer(int customerId)
         {
             try
@@ -588,11 +605,6 @@ namespace Billing_System
             dgvCustomers.AlternatingRowsDefaultCellStyle.BackColor = AppTheme.GridRowAlt;
         }
 
-        private void btnChangePass_Click(object sender, EventArgs e)
-        {
-            frmChangePass changePass = new frmChangePass();
-            changePass.ShowDialog(this);
-        }
     }
 
 }

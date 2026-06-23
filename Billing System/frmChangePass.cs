@@ -130,6 +130,8 @@ namespace Billing_System
                             else
                             {
                                 lblCkCurrent.Text = "Reentry Current Password";
+                                MessageBox.Show("MALIIII", "Current Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                                 txtCurrent.Focus();
                             }
                         }
