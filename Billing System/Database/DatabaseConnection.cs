@@ -10,10 +10,10 @@ namespace BillingSystem.Database
     public class DatabaseConnection
     {
         // Connection string settings — update Password if needed
-        private const string SERVER = "localhost";
+        private const string SERVER = "192.168.0.112";
         private const string DATABASE = "BillingDB";
-        private const string UID = "root";
-        private const string PASSWORD = "3221";  // Add your MySQL password here
+        private const string UID = "billing_user";
+        private const string PASSWORD = "BillingPass123!";  // Add your MySQL password here
 
         private static string ConnectionString =>
             $"server={SERVER};database={DATABASE};uid={UID};pwd={PASSWORD};";

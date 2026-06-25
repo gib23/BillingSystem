@@ -24,7 +24,7 @@ namespace Billing_System
         {
 
             this.BackColor = AppTheme.PrimaryColor;
-            splashTimer.Start();
+            //splashTimer.Start();
 
             pbLoading.SizeMode = PictureBoxSizeMode.StretchImage;
             pbLoading.Image = Properties.Resources.loading; // Assuming you have a loading.gif in your resources
@@ -33,15 +33,15 @@ namespace Billing_System
 
         private void splashTimer_Tick(object sender, EventArgs e)
         {
-            splashTimer.Stop();
+            //splashTimer.Stop();
             // Close the splash and open the Login Form
-            this.Hide();
-            var loginForm = new LoginForm();
+            //this.Hide();
+            //var loginForm = new LoginForm();
 
 
-            // When login form actually closes, close the hidden splash so the app can exit cleanly.
-            loginForm.FormClosed += (s, args) => this.Close();
-            loginForm.Show();
+            //// When login form actually closes, close the hidden splash so the app can exit cleanly.
+            //loginForm.FormClosed += (s, args) => this.Close();
+            //loginForm.Show();
 
         }
     }

@@ -15,19 +15,7 @@ namespace Billing_System
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            // Test Database Connection
-            if (!DatabaseConnection.TestConnection())
-            {
-                MessageBox.Show(
-                    "Cannot connect to the database.\n\n" +
-                    "Please make sure:\n" +
-                    "  1. MySQL Server is running.\n" +
-                    "  2. BillingDB database exists.\n" +
-                    "  3. The password in DatabaseConnection.cs is correct.",
-                    "Database Connection Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
+            // Test Database Connection is transferred to Program.cs for better user experience with splash screen.
 
             txtUsername.Focus();
 
