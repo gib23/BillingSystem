@@ -25,6 +25,10 @@ namespace Billing_System
 
             this.BackColor = AppTheme.PrimaryColor;
             splashTimer.Start();
+
+            pbLoading.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbLoading.Image = Properties.Resources.loading; // Assuming you have a loading.gif in your resources
+            pbLoading.BackColor = Color.Transparent; // Make the PictureBox background transparent
         }
 
         private void splashTimer_Tick(object sender, EventArgs e)

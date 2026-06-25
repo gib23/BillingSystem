@@ -31,15 +31,16 @@
             components = new System.ComponentModel.Container();
             lblAppName = new Label();
             lblTagline = new Label();
-            lblLoading = new Label();
             splashTimer = new System.Windows.Forms.Timer(components);
+            pbLoading = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pbLoading).BeginInit();
             SuspendLayout();
             // 
             // lblAppName
             // 
             lblAppName.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAppName.ForeColor = Color.White;
-            lblAppName.Location = new Point(71, 9);
+            lblAppName.Location = new Point(69, 22);
             lblAppName.Name = "lblAppName";
             lblAppName.Size = new Size(362, 83);
             lblAppName.TabIndex = 0;
@@ -50,35 +51,34 @@
             // 
             lblTagline.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTagline.ForeColor = Color.FromArgb(189, 215, 238);
-            lblTagline.Location = new Point(102, 102);
+            lblTagline.Location = new Point(100, 115);
             lblTagline.Name = "lblTagline";
             lblTagline.Size = new Size(300, 46);
             lblTagline.TabIndex = 1;
             lblTagline.Text = "Water Billing Management System";
             lblTagline.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblLoading
-            // 
-            lblLoading.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblLoading.ForeColor = Color.LightBlue;
-            lblLoading.Location = new Point(174, 191);
-            lblLoading.Name = "lblLoading";
-            lblLoading.Size = new Size(157, 53);
-            lblLoading.TabIndex = 2;
-            lblLoading.Text = "Loading...";
-            lblLoading.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // splashTimer
             // 
             splashTimer.Interval = 2500;
             splashTimer.Tick += splashTimer_Tick;
+            // 
+            // pbLoading
+            // 
+            pbLoading.BackgroundImageLayout = ImageLayout.None;
+            pbLoading.Location = new Point(190, 164);
+            pbLoading.Name = "pbLoading";
+            pbLoading.Size = new Size(120, 120);
+            pbLoading.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbLoading.TabIndex = 2;
+            pbLoading.TabStop = false;
             // 
             // SplashScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(500, 300);
-            Controls.Add(lblLoading);
+            Controls.Add(pbLoading);
             Controls.Add(lblTagline);
             Controls.Add(lblAppName);
             FormBorderStyle = FormBorderStyle.None;
@@ -86,6 +86,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SplashScreen";
             Load += SplashScreen_Load;
+            ((System.ComponentModel.ISupportInitialize)pbLoading).EndInit();
             ResumeLayout(false);
         }
 
@@ -93,7 +94,7 @@
 
         private Label lblAppName;
         private Label lblTagline;
-        private Label lblLoading;
         private System.Windows.Forms.Timer splashTimer;
+        private PictureBox pbLoading;
     }
 }

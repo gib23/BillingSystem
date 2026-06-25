@@ -130,7 +130,7 @@ namespace Billing_System
                             else
                             {
                                 lblCkCurrent.Text = "Reentry Current Password";
-                                MessageBox.Show("MALIIII", "Current Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Current Password is Incorrect", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                                 txtCurrent.Focus();
                             }

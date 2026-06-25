@@ -204,8 +204,18 @@ namespace Billing_System
                         if (dgvTop5.Columns.Count > 0)
                         {
                             dgvTop5.Columns["FullName"].HeaderText = "Customer Name";
+                            dgvTop5.Columns["FullName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
                             dgvTop5.Columns["TotalConsumption"].HeaderText = "Total Consumption (cu.m.)";
+                            dgvTop5.Columns["TotalConsumption"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                            dgvTop5.Columns["TotalConsumption"].DefaultCellStyle.Format = "N2"; // Format as number with 2 decimal places
+                            dgvTop5.Columns["TotalConsumption"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
                             dgvTop5.Columns["TotalBilled"].HeaderText = "Total Billed (₱)";
+                            dgvTop5.Columns["TotalBilled"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                            dgvTop5.Columns["TotalBilled"].DefaultCellStyle.Format = "N2"; // Format as number with 2 decimal places
+                            dgvTop5.Columns["TotalBilled"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
                         }
                     }
                 }

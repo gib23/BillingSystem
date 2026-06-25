@@ -373,9 +373,20 @@ namespace Billing_System
                         if (dgvCustomers.Columns.Count > 0)
                         {
                             dgvCustomers.Columns["CustomerID"].HeaderText = "ID";
+                            dgvCustomers.Columns["CustomerID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
                             dgvCustomers.Columns["FullName"].HeaderText = "Full Name";
+                            dgvCustomers.Columns["FullName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
                             dgvCustomers.Columns["ContactNumber"].HeaderText = "Contact No.";
+                            dgvCustomers.Columns["ContactNumber"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
                             dgvCustomers.Columns["Balance"].HeaderText = "Balance (₱)";
+                            dgvCustomers.Columns["Balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                            dgvCustomers.Columns["Balance"].DefaultCellStyle.Format = "N2";  // Format as number with 2 decimal places
+                            dgvCustomers.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
                         }
 
                         lblTitle.Text = $"Customer List  ({dt.Rows.Count} record(s))";
