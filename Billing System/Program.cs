@@ -56,11 +56,11 @@ namespace Billing_System
 
             if (connectionSuccessful)
             {
-                MessageBox.Show(
-                    "Connected to the database successfully.",
-                    "Database Connection",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                //MessageBox.Show(
+                //    "Connected to the database successfully.",
+                //    "Database Connection",
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Information);
 
                 LoginForm loginForm = new LoginForm();
 

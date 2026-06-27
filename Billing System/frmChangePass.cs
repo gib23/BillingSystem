@@ -48,10 +48,12 @@ namespace Billing_System
 
             if (txtCurrent.PasswordChar == '*')
             {
+                btnCurrent.BackgroundImage = Properties.Resources.eye_close;
                 txtCurrent.PasswordChar = '\0';
             }
             else
             {
+                btnCurrent.BackgroundImage = Properties.Resources.eye_open;
                 txtCurrent.PasswordChar = '*';
             }
         }
@@ -62,10 +64,12 @@ namespace Billing_System
 
             if (txtNewPass.PasswordChar == '*')
             {
+                btnNew.BackgroundImage = Properties.Resources.eye_close;
                 txtNewPass.PasswordChar = '\0';
             }
             else
             {
+                btnNew.BackgroundImage = Properties.Resources.eye_open;
                 txtNewPass.PasswordChar = '*';
             }
         }
@@ -75,10 +79,12 @@ namespace Billing_System
             tmrShow.Start();
             if (txtRetype.PasswordChar == '*')
             {
+                btnRetype.BackgroundImage = Properties.Resources.eye_close;
                 txtRetype.PasswordChar = '\0';
             }
             else
-            {
+            {                
+                btnRetype.BackgroundImage = Properties.Resources.eye_open;
                 txtRetype.PasswordChar = '*';
             }
         }

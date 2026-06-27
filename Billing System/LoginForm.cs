@@ -56,10 +56,10 @@ namespace Billing_System
                     conn.Open();
 
                     // Parameterized query — safe from SQL injection
-                    string sql = @"SELECT UserID, FullName, Role
+                    string sql = @"SELECT UserID, FullName, Role, Status
                            FROM   Users
                            WHERE  Username = @Username
-                             AND  Password = @Password;";
+                             AND  BINARY Password = @Password;";
 
                     using (var cmd = new MySqlCommand(sql, conn))
                     {
@@ -67,9 +67,24 @@ namespace Billing_System
                         cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
 
                         using (var reader = cmd.ExecuteReader())
-                        {
+                        {                           
+
                             if (reader.Read())
                             {
+                                if (Convert.ToInt32(reader["Status"]) == 0)
+                                {
+                                    MessageBox.Show(
+                                        "Your account is inactive. Please contact the administrator.",
+                                        "Account Inactive",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Warning);
+                                    txtUsername.Clear();
+                                    txtPassword.Clear();
+                                    txtUsername.Focus();
+                                    // I'd like to add audit log here for inactive account login attempt but too lazy for that >//<
+                                    return;
+                                }
+
                                 // Populate AppSession with the logged-in user's details
                                 AppSession.CurrentUserID = reader.GetInt32("UserID");
                                 AppSession.CurrentUsername = txtUsername.Text.Trim();

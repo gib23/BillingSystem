@@ -559,6 +559,8 @@ namespace Billing_System
                                         btnAuditLog.Visible = isAllowed; break;
                                     case "ManagePermissions":
                                         btnManagePermissions.Visible = isAllowed; break;
+                                    case "UserManagement":
+                                        btnUserMgt.Visible = isAllowed; break;
                                 }
                             }
                         }
@@ -616,6 +618,11 @@ namespace Billing_System
             dgvCustomers.AlternatingRowsDefaultCellStyle.BackColor = AppTheme.GridRowAlt;
         }
 
+        private void btnUserMgt_Click(object sender, EventArgs e)
+        {
+            UserManagement usrmgt = new UserManagement();
+            usrmgt.ShowDialog(this);
+        }
     }
 
 }

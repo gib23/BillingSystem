@@ -56,6 +56,7 @@
             pnlTop = new Panel();
             btnChangePass = new Button();
             pnlBottom = new Panel();
+            btnUserMgt = new Button();
             btnView = new Button();
             toolTip = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).BeginInit();
@@ -90,7 +91,7 @@
             dgvCustomers.RowHeadersVisible = false;
             dgvCustomers.RowHeadersWidth = 51;
             dgvCustomers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCustomers.Size = new Size(689, 317);
+            dgvCustomers.Size = new Size(828, 477);
             dgvCustomers.TabIndex = 2;
             dgvCustomers.CellDoubleClick += dgvCustomers_CellDoubleClick;
             dgvCustomers.SelectionChanged += dgvCustomers_SelectionChanged;
@@ -151,7 +152,7 @@
             btnAdd.BackgroundImageLayout = ImageLayout.Stretch;
             btnAdd.FlatAppearance.BorderSize = 0;
             btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Location = new Point(733, 83);
+            btnAdd.Location = new Point(872, 83);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(30, 30);
             btnAdd.TabIndex = 3;
@@ -167,7 +168,7 @@
             btnDelete.BackgroundImageLayout = ImageLayout.Stretch;
             btnDelete.FlatAppearance.BorderSize = 0;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Location = new Point(733, 124);
+            btnDelete.Location = new Point(872, 124);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(30, 30);
             btnDelete.TabIndex = 4;
@@ -220,7 +221,7 @@
             btnAnalytics.BackgroundImageLayout = ImageLayout.Stretch;
             btnAnalytics.FlatAppearance.BorderSize = 0;
             btnAnalytics.FlatStyle = FlatStyle.Flat;
-            btnAnalytics.Location = new Point(733, 247);
+            btnAnalytics.Location = new Point(872, 247);
             btnAnalytics.Name = "btnAnalytics";
             btnAnalytics.Size = new Size(30, 30);
             btnAnalytics.TabIndex = 6;
@@ -236,7 +237,7 @@
             btnExportExcel.BackgroundImageLayout = ImageLayout.Stretch;
             btnExportExcel.FlatAppearance.BorderSize = 0;
             btnExportExcel.FlatStyle = FlatStyle.Flat;
-            btnExportExcel.Location = new Point(733, 288);
+            btnExportExcel.Location = new Point(872, 288);
             btnExportExcel.Name = "btnExportExcel";
             btnExportExcel.Size = new Size(30, 30);
             btnExportExcel.TabIndex = 5;
@@ -252,7 +253,7 @@
             btnExportPdf.BackgroundImageLayout = ImageLayout.Stretch;
             btnExportPdf.FlatAppearance.BorderSize = 0;
             btnExportPdf.FlatStyle = FlatStyle.Flat;
-            btnExportPdf.Location = new Point(733, 329);
+            btnExportPdf.Location = new Point(872, 329);
             btnExportPdf.Name = "btnExportPdf";
             btnExportPdf.Size = new Size(30, 30);
             btnExportPdf.TabIndex = 7;
@@ -270,7 +271,7 @@
             btnAuditLog.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnAuditLog.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnAuditLog.FlatStyle = FlatStyle.Flat;
-            btnAuditLog.Location = new Point(733, 206);
+            btnAuditLog.Location = new Point(872, 206);
             btnAuditLog.Name = "btnAuditLog";
             btnAuditLog.Size = new Size(30, 30);
             btnAuditLog.TabIndex = 8;
@@ -287,7 +288,7 @@
             btnManagePermissions.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnManagePermissions.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnManagePermissions.FlatStyle = FlatStyle.Flat;
-            btnManagePermissions.Location = new Point(733, 165);
+            btnManagePermissions.Location = new Point(872, 165);
             btnManagePermissions.Name = "btnManagePermissions";
             btnManagePermissions.Size = new Size(30, 30);
             btnManagePermissions.TabIndex = 9;
@@ -299,9 +300,9 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { lblStatusUser, lblStatusSep, lblStatusTime });
-            statusStrip1.Location = new Point(0, 427);
+            statusStrip1.Location = new Point(0, 587);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(782, 26);
+            statusStrip1.Size = new Size(921, 26);
             statusStrip1.TabIndex = 10;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -314,7 +315,7 @@
             // lblStatusSep
             // 
             lblStatusSep.Name = "lblStatusSep";
-            lblStatusSep.Size = new Size(456, 20);
+            lblStatusSep.Size = new Size(595, 20);
             lblStatusSep.Spring = true;
             // 
             // lblStatusTime
@@ -337,7 +338,7 @@
             pnlTop.Controls.Add(lblTitle);
             pnlTop.Location = new Point(0, 0);
             pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(782, 45);
+            pnlTop.Size = new Size(921, 45);
             pnlTop.TabIndex = 11;
             // 
             // btnChangePass
@@ -347,7 +348,7 @@
             btnChangePass.BackgroundImageLayout = ImageLayout.Stretch;
             btnChangePass.FlatAppearance.BorderSize = 0;
             btnChangePass.FlatStyle = FlatStyle.Flat;
-            btnChangePass.Location = new Point(733, 9);
+            btnChangePass.Location = new Point(872, 9);
             btnChangePass.Name = "btnChangePass";
             btnChangePass.Size = new Size(30, 30);
             btnChangePass.TabIndex = 6;
@@ -358,6 +359,7 @@
             // pnlBottom
             // 
             pnlBottom.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlBottom.Controls.Add(btnUserMgt);
             pnlBottom.Controls.Add(btnView);
             pnlBottom.Controls.Add(txtSearch);
             pnlBottom.Controls.Add(dgvCustomers);
@@ -371,8 +373,22 @@
             pnlBottom.Controls.Add(btnAnalytics);
             pnlBottom.Location = new Point(0, 45);
             pnlBottom.Name = "pnlBottom";
-            pnlBottom.Size = new Size(782, 379);
+            pnlBottom.Size = new Size(921, 539);
             pnlBottom.TabIndex = 12;
+            // 
+            // btnUserMgt
+            // 
+            btnUserMgt.BackgroundImage = (Image)resources.GetObject("btnUserMgt.BackgroundImage");
+            btnUserMgt.BackgroundImageLayout = ImageLayout.Stretch;
+            btnUserMgt.FlatAppearance.BorderSize = 0;
+            btnUserMgt.FlatStyle = FlatStyle.Flat;
+            btnUserMgt.Location = new Point(872, 365);
+            btnUserMgt.Name = "btnUserMgt";
+            btnUserMgt.Size = new Size(30, 30);
+            btnUserMgt.TabIndex = 11;
+            btnUserMgt.Text = "button1";
+            btnUserMgt.UseVisualStyleBackColor = true;
+            btnUserMgt.Click += btnUserMgt_Click;
             // 
             // btnView
             // 
@@ -381,7 +397,7 @@
             btnView.BackgroundImageLayout = ImageLayout.Stretch;
             btnView.FlatAppearance.BorderSize = 0;
             btnView.FlatStyle = FlatStyle.Flat;
-            btnView.Location = new Point(733, 42);
+            btnView.Location = new Point(872, 42);
             btnView.Name = "btnView";
             btnView.Size = new Size(30, 30);
             btnView.TabIndex = 10;
@@ -393,7 +409,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(782, 453);
+            ClientSize = new Size(921, 613);
             ControlBox = false;
             Controls.Add(pnlBottom);
             Controls.Add(pnlTop);
@@ -443,5 +459,6 @@
         private Button btnChangePass;
         private Button btnView;
         private ToolTip toolTip;
+        private Button btnUserMgt;
     }
 }
