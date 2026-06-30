@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BillingSystem.Utils;
-
+using System.Runtime.InteropServices;
 
 namespace Billing_System
 {
@@ -25,6 +25,10 @@ namespace Billing_System
         // Stores the CustomerID of the currently selected row.
         // 0 means no customer is currently selected.
         private int _selectedCustomerId = 0;
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
+
+        private const int EM_SETCUEBANNER = 0x1501;
 
 
         public CustomerListForm()
@@ -45,6 +49,7 @@ namespace Billing_System
             LoadCustomers();
             ApplyPermissions();
             InitStatusStrip();
+            SendMessage(txtSearch.Handle, EM_SETCUEBANNER, 0, "Search by Name, Address, or Contact No.");
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -76,7 +81,7 @@ namespace Billing_System
         private void dgvCustomers_SelectionChanged(object sender, EventArgs e)
         {
             // If no row is selected (e.g., grid is empty), do nothing
-            if (dgvCustomers.CurrentRow == null) return;
+            if (dgvCustomers.CurrentRow == null) { _selectedCustomerId = 0; return; }
 
             // Read the CustomerID value from the selected row
             var idCell = dgvCustomers.CurrentRow.Cells["CustomerID"].Value;
@@ -340,6 +345,89 @@ namespace Billing_System
             frmViewBillingHistory viewBillingHistory = new frmViewBillingHistory(_selectedCustomerId);
             viewBillingHistory.ShowDialog(this);
         }
+        private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvCustomers.Rows.Count == 0 || _selectedCustomerId == 0)
+            {
+                MessageBox.Show("Please select a customer to archive.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                $"Are you sure you want to archive {dgvCustomers.CurrentRow.Cells["FullName"].Value.ToString()}?\n" +
+                "Archived customers will not appear in the main list.",
+                "Confirm Archive",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    using (var conn = DatabaseConnection.GetConnection())
+                    {
+                        conn.Open();
+                        string sql = @"UPDATE Customers
+                                   SET isarchive = 1
+                                   WHERE CustomerID = @CustomerID;";
+                        using (var cmd = new MySqlCommand(sql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@CustomerID", _selectedCustomerId);
+                            int rowsAffected = cmd.ExecuteNonQuery();
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Customer archived successfully.",
+                                    "Archived", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                AuditLogger.Log("ARCHIVE_CUSTOMER", $"Customer ID {_selectedCustomerId} archived by {AppSession.CurrentUsername}.");
+
+                                LoadCustomers();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Customer could not be archived. It may no longer exist.",
+                                    "Archive Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error archiving customer:\n{ex.Message}",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+        }
+        private void viewArchiveListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ArchivedCustomer archivedCustomer = new ArchivedCustomer();
+            archivedCustomer.ShowDialog(this);
+            LoadCustomers();
+        }
+        private void dgvCustomers_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Clear any rows the user had previously highlighted
+                dgvCustomers.ClearSelection();
+
+                // Simultaneously select the row that was just right-clicked
+                dgvCustomers.Rows[e.RowIndex].Selected = true;
+
+                // (Optional) Move the active cell focus to the clicked cell
+                dgvCustomers.CurrentCell = dgvCustomers.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                // Now show your context menu exactly where the mouse is
+                cmsArchive.Show(Cursor.Position);
+            }
+        }
+        private void btnUserMgt_Click(object sender, EventArgs e)
+        {
+            UserManagement usrmgt = new UserManagement();
+            usrmgt.ShowDialog(this);
+        }
+
 
         // METHODS AHEAD //
         private void LoadCustomers()
@@ -359,6 +447,7 @@ namespace Billing_System
                                   Balance,
                                   Status
                            FROM   Customers
+                           WHERE isarchive = 0
                            ORDER  BY FullName ASC;";
 
                     using (var adapter = new MySqlDataAdapter(sql, conn))
@@ -389,7 +478,7 @@ namespace Billing_System
 
                         }
 
-                        lblTitle.Text = $"Customer List  ({dt.Rows.Count} record(s))";
+                        lblTitle.Text = $"CUSTOMER LIST - ({dt.Rows.Count} record(s))";
                     }
                 }
             }
@@ -618,11 +707,7 @@ namespace Billing_System
             dgvCustomers.AlternatingRowsDefaultCellStyle.BackColor = AppTheme.GridRowAlt;
         }
 
-        private void btnUserMgt_Click(object sender, EventArgs e)
-        {
-            UserManagement usrmgt = new UserManagement();
-            usrmgt.ShowDialog(this);
-        }
+
     }
 
 }

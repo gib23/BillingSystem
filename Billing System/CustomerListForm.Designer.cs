@@ -38,6 +38,9 @@
             ContactNumber = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             Balance = new DataGridViewTextBoxColumn();
+            cmsArchive = new ContextMenuStrip(components);
+            archiveToolStripMenuItem = new ToolStripMenuItem();
+            viewArchiveListToolStripMenuItem = new ToolStripMenuItem();
             btnAdd = new Button();
             btnDelete = new Button();
             btnLogout = new Button();
@@ -60,6 +63,7 @@
             btnView = new Button();
             toolTip = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).BeginInit();
+            cmsArchive.SuspendLayout();
             statusStrip1.SuspendLayout();
             pnlTop.SuspendLayout();
             pnlBottom.SuspendLayout();
@@ -84,6 +88,7 @@
             dgvCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCustomers.Columns.AddRange(new DataGridViewColumn[] { CustomerID, FullName, Address, ContactNumber, Email, Balance });
+            dgvCustomers.ContextMenuStrip = cmsArchive;
             dgvCustomers.Location = new Point(38, 42);
             dgvCustomers.MultiSelect = false;
             dgvCustomers.Name = "dgvCustomers";
@@ -94,6 +99,7 @@
             dgvCustomers.Size = new Size(828, 477);
             dgvCustomers.TabIndex = 2;
             dgvCustomers.CellDoubleClick += dgvCustomers_CellDoubleClick;
+            dgvCustomers.CellMouseDown += dgvCustomers_CellMouseDown;
             dgvCustomers.SelectionChanged += dgvCustomers_SelectionChanged;
             // 
             // CustomerID
@@ -143,6 +149,27 @@
             Balance.MinimumWidth = 6;
             Balance.Name = "Balance";
             Balance.ReadOnly = true;
+            // 
+            // cmsArchive
+            // 
+            cmsArchive.ImageScalingSize = new Size(20, 20);
+            cmsArchive.Items.AddRange(new ToolStripItem[] { archiveToolStripMenuItem, viewArchiveListToolStripMenuItem });
+            cmsArchive.Name = "contextMenuStrip1";
+            cmsArchive.Size = new Size(195, 52);
+            // 
+            // archiveToolStripMenuItem
+            // 
+            archiveToolStripMenuItem.Name = "archiveToolStripMenuItem";
+            archiveToolStripMenuItem.Size = new Size(194, 24);
+            archiveToolStripMenuItem.Text = "Archive Customer";
+            archiveToolStripMenuItem.Click += archiveToolStripMenuItem_Click;
+            // 
+            // viewArchiveListToolStripMenuItem
+            // 
+            viewArchiveListToolStripMenuItem.Name = "viewArchiveListToolStripMenuItem";
+            viewArchiveListToolStripMenuItem.Size = new Size(194, 24);
+            viewArchiveListToolStripMenuItem.Text = "View Archive List";
+            viewArchiveListToolStripMenuItem.Click += viewArchiveListToolStripMenuItem_Click;
             // 
             // btnAdd
             // 
@@ -378,6 +405,7 @@
             // 
             // btnUserMgt
             // 
+            btnUserMgt.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnUserMgt.BackgroundImage = (Image)resources.GetObject("btnUserMgt.BackgroundImage");
             btnUserMgt.BackgroundImageLayout = ImageLayout.Stretch;
             btnUserMgt.FlatAppearance.BorderSize = 0;
@@ -419,6 +447,7 @@
             Text = "BILLING SYSTEM - CUSTOMER LIST";
             Load += CustomerListForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).EndInit();
+            cmsArchive.ResumeLayout(false);
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             pnlTop.ResumeLayout(false);
@@ -460,5 +489,8 @@
         private Button btnView;
         private ToolTip toolTip;
         private Button btnUserMgt;
+        private ContextMenuStrip cmsArchive;
+        private ToolStripMenuItem archiveToolStripMenuItem;
+        private ToolStripMenuItem viewArchiveListToolStripMenuItem;
     }
 }
